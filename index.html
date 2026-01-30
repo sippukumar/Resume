@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shippu Kumar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --card:#12182a;
+      --muted:#8aa0c9;
+      --text:#eaf0ff;
+      --accent:#6ae3ff;
+      --accent-2:#7cffb2;
+      --gradient:linear-gradient(135deg, #6ae3ff 0%, #7cffb2 100%);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% 10%, #0f1530 0%, #0b0f1a 50%, #0b0f1a 100%); color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;background:rgba(11,15,26,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:40px;height:40px;border-radius:12px;
+      background:var(--gradient);
+      box-shadow:0 6px 18px rgba(106,227,255,.35);
+    }
+    .brand h1{font-family:Poppins, Inter, sans-serif;font-size:18px;letter-spacing:.4px;margin:0}
+    .nav-links{display:flex;gap:18px}
+    .nav-links a{padding:8px 12px;border-radius:10px;color:var(--muted)}
+    .nav-links a:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    /* Hero */
+    .hero{padding:70px 0 40px}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.06);color:var(--accent);
+      border:1px solid rgba(106,227,255,.35);
+      box-shadow:0 6px 18px rgba(106,227,255,.15);
+    }
+    .title{font-family:Poppins, Inter, sans-serif;font-size:42px;line-height:1.15;margin:16px 0}
+    .subtitle{color:var(--muted);font-size:16px;max-width:640px}
+    .cta{display:flex;gap:14px;margin-top:24px}
+    .btn{
+      padding:12px 18px;border-radius:12px;font-weight:600;border:1px solid transparent;
+      transition:.2s transform ease, .2s box-shadow ease, .2s background ease;
+    }
+    .btn-primary{background:var(--gradient);color:#0b0f1a;box-shadow:0 10px 24px rgba(124,255,178,.25)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(124,255,178,.35)}
+    .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);border-color:rgba(255,255,255,.12)}
+    .btn-ghost:hover{background:rgba(255,255,255,.1)}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:22px; box-shadow:var(--shadow);
+    }
+    .stat{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:rgba(255,255,255,.04);margin-bottom:10px}
+    .stat .label{color:var(--muted)}
+    .progress{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+    .bar{height:100%;background:var(--gradient);width:0;animation:grow 1.6s ease forwards}
+    @keyframes grow{to{width:var(--w)}}
+    /* Section */
+    section{padding:40px 0}
+    .section-title{font-family:Poppins, Inter, sans-serif;font-size:26px;margin-bottom:16px}
+    .section-desc{color:var(--muted);margin-top:-6px}
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:12px}
+    .chip{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:12px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+      transition:.2s transform ease, .2s box-shadow ease;
+    }
+    .chip:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,.25)}
+    .chip .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    /* Projects */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;
+      overflow:hidden;box-shadow:var(--shadow);transition:.25s transform ease, .25s box-shadow ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.45)}
+    .thumb{height:140px;background:radial-gradient(600px 300px at 20% 20%, #1b2444 0%, #12182a 60%, #0b0f1a 100%)}
+    .card-body{padding:16px}
+    .card-title{font-weight:700;margin:0 0 6px}
+    .card-text{color:var(--muted);font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+    /* Contact */
+    .contact{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px
+    }
+    .contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)
+    }
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form .full{grid-column:1/-1}
+    .input, textarea{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);color:var(--text);outline:none
+    }
+    textarea{min-height:120px;resize:vertical}
+    .send{margin-top:10px}
+    /* Footer */
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.06)}
+    .social{display:flex;gap:12px}
+    .social a{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-inner,.contact{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .title{font-size:34px}
+      .grid{grid-template-columns:1fr}
+      .form{grid-template-columns:1fr}
+      .nav-links{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="WhatsApp Image 2026-01-16 at 10.54.49.jpeg" alt="Shippu Kumar" class="logo" />
+        <h1>Sippu Kumar</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="badge">🚀 Full‑stack & Data‑driven Developer</span>
+        <h2 class="title">Building clean, fast, and scalable solutions.</h2>
+        <p class="subtitle">
+          I craft performant backends, precise UIs, and data workflows—leveraging Java, Python, C/C++, SQL, and Pandas.
+          Focused on clarity, automation, and real‑world impact.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-card" aria-label="Skill proficiency">
+        <div class="stat">
+          <div>
+            <strong>Python & Pandas</strong>
+            <div class="label">Data wrangling, analysis, automation</div>
+          </div>
+          <div style="width:48%">
+            <div class="progress"><div class="bar" style="--w:88%"></div></div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <strong>Java</strong>
+            <div class="label">APIs, OOP, performance</div>
+          </div>
+          <div style="width:48%">
+            <div class="progress"><div class="bar" style="--w:80%"></div></div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <strong>C / C++</strong>
+            <div class="label">Systems, algorithms, optimization</div>
+          </div>
+          <div style="width:48%">
+            <div class="progress"><div class="bar" style="--w:75%"></div></div>
+          </div>
+        </div>
+        <div class="stat">
+          <div>
+            <strong>SQL</strong>
+            <div class="label">Schema design, queries, tuning</div>
+          </div>
+          <div style="width:48%">
+            <div class="progress"><div class="bar" style="--w:82%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h3 class="section-title">About</h3>
+      <p class="section-desc">
+        I’m Sippu Kumar—driven by clean architecture and practical automation. I love turning complex
+        requirements into elegant, maintainable systems. From backend APIs to data pipelines and pixel‑perfect UIs,
+        I prioritize performance, readability, and user experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <h3 class="section-title">Skills</h3>
+      <div class="skills">
+        <div class="chip"><span class="dot"></span><strong>Java:</strong> Spring basics, REST APIs, OOP</div>
+        <div class="chip"><span class="dot"></span><strong>Python:</strong> Automation, scripting, data tools</div>
+        <div class="chip"><span class="dot"></span><strong>Pandas:</strong> DataFrames, ETL, analysis</div>
+        <div class="chip"><span class="dot"></span><strong>C:</strong> Low‑level logic, memory handling</div>
+        <div class="chip"><span class="dot"></span><strong>C++:</strong> STL, performance, patterns</div>
+        <div class="chip"><span class="dot"></span><strong>SQL:</strong> Joins, indexing, normalization</div>
+        <div class="chip"><span class="dot"></span><strong>Git:</strong> Branching, PRs, CI basics</div>
+        <div class="chip"><span class="dot"></span><strong>Frontend:</strong> HTML, CSS, responsive UI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h3 class="section-title">Projects</h3>
+      <p class="section-desc">Selected work showcasing backend design, data processing, and clean UI implementation.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h4 class="card-title">Data Insights Dashboard</h4>
+            <p class="card-text">Interactive analytics with Pandas pipelines and SQL aggregation, exported to clean visual reports.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">SQL</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h4 class="card-title">RESTful Service</h4>
+            <p class="card-text">Robust API in Java with authentication, pagination, and performance‑minded design.</p>
+            <div class="tags">
+              <span class="tag">Java</span><span class="tag">REST</span><span class="tag">OOP</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h4 class="card-title">Systems Toolkit</h4>
+            <p class="card-text">C/C++ utilities for fast file processing and algorithmic tasks with clean CLI UX.</p>
+            <div class="tags">
+              <span class="tag">C</span><span class="tag">C++</span><span class="tag">Performance</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h3 class="section-title">Contact</h3>
+      <div class="contact">
+        <div class="contact-card">
+          <p class="section-desc">Let’s collaborate—drop a message and I’ll get back soon.</p>
+          <form class="form" onsubmit="event.preventDefault(); alert('Thanks, your message has been noted!');">
+            <input class="input" type="text" placeholder="Your name" required />
+            <input class="input" type="email" placeholder="Email" required />
+            <input class="input full" type="text" placeholder="Subject" />
+            <textarea class="full" placeholder="Message"></textarea>
+            <button class="btn btn-primary send full" type="submit">Send message</button>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h4 style="margin:0 0 10px">Quick links</h4>
+          <div class="social">
+            <a href="https://github.com/sippukumar" aria-label="GitHub">GitHub</a>
+            <a href="www.linkedin.com/in/sippu-kumar-3490a0378" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" aria-label="Email">Email</a>
+            <a href="#" aria-label="Resume">Resume</a>
+          </div>
+          <p class="section-desc" style="margin-top:12px">
+            Location: kuleshra greater noida gautam buddh nager 201306, UP, India • Open to freelance and full‑time roles
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <div>© <span id="y"></span> Sippu Kumar</div>
+      <div>Crafted with care—clean code, clear results.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
